@@ -2,9 +2,20 @@ let name;
 let x=0;
 let y=0;
 
+const speed =5;
+
+const mapContainer = document.getElementById('map-container');
+const mapWidth = mapContainer.offsetWidth;
+const mapHeight = mapContainer.offsetHeight;
 const urlParams = new URLSearchParams(window.location.search);
 
 name = urlParams.get('value');
+
+
+function updatePlayerPosition() {
+    player.style.left = `${x}px`;
+    player.style.top = `${y}px`;
+}
 
 let keys = {};
 
@@ -16,25 +27,30 @@ window.addEventListener('keyup', function(event) {
     keys[event.key] = false;
 });
 
+// Game loop
 function gameLoop() {
-    if (keys['z']) {
-        y += 10;
-        yPlayerMiniMap -= 0.082;
+    if (keys['ArrowUp'] || keys['z']) {
+        y -= speed;
     }
-    if (keys['s']) {
-        y -= 10;
-        yPlayerMiniMap += 0.082;
+    if (keys['ArrowDown'] || keys['s']) {
+        y += speed;
     }
-    if (keys['q']) {
-        x += 10;
-        xPlayerMiniMap -= 0.082;
+    if (keys['ArrowLeft'] || keys['q']) {
+        x -= speed;
     }
-    if (keys['d']) {
-        x -= 10;
-        xPlayerMiniMap += 0.082;
+    if (keys['ArrowRight'] || keys['d']) {
+        x += speed;
     }
+
+
+
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    if (x > mapWidth - player.offsetWidth) x = mapWidth - player.offsetWidth;
+    if (y > mapHeight - player.offsetHeight) y = mapHeight - player.offsetHeight;
+
+    updatePlayerPosition();
     requestAnimationFrame(gameLoop);
 }
 
 gameLoop();
-
