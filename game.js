@@ -8,6 +8,7 @@ const mapContainer = document.getElementById('map-container');
 const mapWidth = mapContainer.offsetWidth;
 const mapHeight = mapContainer.offsetHeight;
 const urlParams = new URLSearchParams(window.location.search);
+const player = document.getElementById("player");
 
 name = urlParams.get('value');
 
@@ -15,6 +16,7 @@ name = urlParams.get('value');
 function updatePlayerPosition() {
     player.style.left = `${x}px`;
     player.style.top = `${y}px`;
+    window.scrollTo(x+6000-window.innerWidth/2, y+6000-window.innerHeight/2);
 }
 
 let keys = {};
@@ -42,8 +44,6 @@ function gameLoop() {
         x += speed;
     }
 
-
-
     if (x < 0) x = 0;
     if (y < 0) y = 0;
     if (x > mapWidth - player.offsetWidth) x = mapWidth - player.offsetWidth;
@@ -52,5 +52,5 @@ function gameLoop() {
     updatePlayerPosition();
     requestAnimationFrame(gameLoop);
 }
-
+window.scrollTo(x+6000-window.innerWidth/2, y+6000-window.innerHeight/2);
 gameLoop();
