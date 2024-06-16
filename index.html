@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prout.io</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>prout.io</h1>
+    <div class="game-mode">
+        <label for="game-mode-select">Game mode :</label>
+        <select id="game-mode-select" class="game-mode-select" name="game-mode">
+            <option value="">Select a game mode</option>
+            <option value="mode1">Game Mode 1</option>
+            <option value="mode2">Game Mode 2</option>
+            <option value="mode3">Game Mode 3</option>
+        </select>
+    </div>
+
+    <div class="form-name">
+        <form class="form-name">
+            <label for="input-form-name" class="label-form-name">saisir un nom :</label>
+            <input class="input-form-name" type="text" id="input-form-name" name="input-form-name" placeholder="ex : gros caca">
+        </form>
+        <button class="send-form-name" onclick="redirectToGame()">start</button>
+    </div>
+</body>
+</html>
