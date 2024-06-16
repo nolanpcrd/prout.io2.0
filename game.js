@@ -17,8 +17,8 @@ function updatePlayerPosition() {
     player.style.left = `${x}px`;
     player.style.top = `${y}px`;
 
-    let offsetX = -(x - mapContainer.offsetWidth / 2);
-    let offsetY = -(y - mapContainer.offsetHeight / 2);
+    let offsetX = -(x - mapWidth / 2);
+    let offsetY = -(y - mapHeight / 2);
 
     mapContainer.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 }
